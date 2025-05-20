@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Docente</title>
+    <link rel="stylesheet" href="/MiproyectoMASP/public/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Registrar Nuevo Docente</h1>
+        <div class="registro-box">
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        <form action="/MiproyectoMASP/public/docente/registrar" method="POST">
+            <div class="input-group">
+                <label for="cedula">Cédula:</label>
+                <input type="text" name="cedula" id="cedula" value="{{ old_data.cedula|default('') }}" required>
+                {% if errores.cedula %}
+                    <p class="error-message">{{ errores.cedula }}</p>
+                {% endif %}
+            </div>
+            <div class="input-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" id="nombre" value="{{ old_data.nombre|default('') }}" required>
+                {% if errores.nombre %}
+                    <p class="error-message">{{ errores.nombre }}</p>
+                {% endif %}
+            </div>
+            <div class="input-group">
+                <label for="apellido">Apellido:</label>
+                <input type="text" name="apellido" id="apellido" value="{{ old_data.apellido|default('') }}" required>
+                {% if errores.apellido %}
+                    <p class="error-message">{{ errores.apellido }}</p>
+                {% endif %}
+            </div>
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" value="{{ old_data.email|default('') }}" required>
+                {% if errores.email %}
+                    <p class="error-message">{{ errores.email }}</p>
+                {% endif %}
+            </div>
+            <div class="input-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="text" name="telefono" id="telefono" value="{{ old_data.telefono|default('') }}" required>
+                {% if errores.telefono %}
+                    <p class="error-message">{{ errores.telefono }}</p>
+                {% endif %}
+            </div>
+            <button type="submit">Registrar Docente</button>
+            <p><a href="/MiproyectoMASP/public/">Volver al inicio</a></p>
+        </form>
+        </div>
+    </div>
+</body>
+</html>
